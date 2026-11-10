@@ -13,7 +13,7 @@
     --font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-* {
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -95,32 +95,35 @@ body {
     text-decoration: none;
     font-weight: 500;
     transition: opacity 0.2s;
+    white-space: nowrap;
 }
 
 .nav-link:hover {
     opacity: 0.8;
 }
 
-.btn-cta-nav {
-    background-color: var(--secondary);
-    color: #FFFFFF;
-    padding: 8px 16px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 600;
+/* Link da Logo PNG sem fundo */
+.nav-insta-btn {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    transition: background-color 0.2s;
+    justify-content: center;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-.btn-cta-nav:hover {
-    background-color: #1f6696;
+.nav-insta-btn:hover {
+    transform: scale(1.15);
+    opacity: 0.9;
 }
 
-.insta-icon-sm {
-    width: 16px;
-    height: 16px;
+.insta-png-img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    display: block;
 }
 
 /* Hero Section */
@@ -132,15 +135,15 @@ body {
 }
 
 .badge-alert {
-    background-color: var(--highlight);
-    color: #1D1D1F;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.85rem;
+    background-color: transparent;
+    color: #FFFFFF;                 
+    padding: 0;
+    border-radius: 0;
+    font-size: 0.9rem;
     font-weight: 700;
     text-transform: uppercase;
     display: inline-block;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .hero h2 {
@@ -208,7 +211,6 @@ body {
     box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
 
-/* Moldura Verde em volta da Imagem */
 .img-frame {
     border: 4px solid var(--primary);
     border-radius: 8px;
@@ -242,38 +244,6 @@ body {
 .gallery-info p {
     font-size: 0.9rem;
     color: #444;
-}
-
-.insta-container {
-    margin-top: 2.5rem;
-    display: flex;
-    justify-content: center;
-}
-
-/* Botão Instagram Personalizado com Gradiente */
-.btn-instagram {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-    color: #FFFFFF;
-    padding: 12px 24px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.btn-instagram:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.2);
-}
-
-.insta-icon {
-    width: 20px;
-    height: 20px;
 }
 
 /* Ramos (Cards Grid) */
@@ -314,36 +284,55 @@ body {
     font-size: 1.3rem;
 }
 
-/* Footer */
+/* ==========================================================================
+   FOOTER (Rodapé responsivo)
+   ========================================================================== */
 .footer {
     background-color: var(--primary);
     color: #FFFFFF;
-    padding: 2rem 0;
-    text-align: center;
+    padding: 1.8rem 0;
     font-size: 0.9rem;
+    text-align: center;
 }
 
-.footer-link {
-    color: var(--highlight);
-    text-decoration: none;
-    font-weight: 600;
+.footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.footer-link:hover {
-    text-decoration: underline;
+.footer-copy {
+    margin: 0;
+    opacity: 0.9;
 }
 
-/* Responsividade Mobile */
+/* ==========================================================================
+   RESPONSIVIDADE MOBILE
+   ========================================================================== */
 @media (max-width: 768px) {
     .header-container {
         flex-direction: column;
         gap: 12px;
     }
 
+    /* Menu de navegação lado a lado no celular com fonte levemente reduzida */
     .nav-menu {
         width: 100%;
+        display: flex;
+        flex-direction: row;
         justify-content: center;
-        flex-wrap: wrap;
+        align-items: center;
+        flex-wrap: nowrap;
+        gap: 12px;
+    }
+
+    .nav-link {
+        font-size: 0.82rem;
+    }
+
+    .insta-png-img {
+        width: 22px;
+        height: 22px;
     }
 
     .hero h2 {
@@ -352,5 +341,14 @@ body {
 
     .gallery-img {
         height: 200px;
+    }
+
+    .footer {
+        padding: 1.5rem 1rem;
+    }
+
+    .footer-copy {
+        font-size: 0.85rem;
+        line-height: 1.4;
     }
 }
